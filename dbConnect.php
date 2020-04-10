@@ -1,3 +1,4 @@
+<!--AUTHOR: Willi Hertel-->
 <?php
 
 $dbServername = "localhost";

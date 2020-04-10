@@ -1,3 +1,4 @@
+<!--AUTHOR: Willi Hertel-->
 <?php
 include_once 'includes.php';
 $username = "";

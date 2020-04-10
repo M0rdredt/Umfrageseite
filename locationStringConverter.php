@@ -1,3 +1,4 @@
+<!--AUTHOR: Willi Hertel-->
 <?php
 function uriString($file){
 if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {

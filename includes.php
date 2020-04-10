@@ -1,3 +1,4 @@
+<!--AUTHOR: Willi Hertel-->
 <?php
 include_once  'session.php';
 include_once 'dbConnect.php';
