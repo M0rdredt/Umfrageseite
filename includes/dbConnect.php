@@ -1,6 +1,6 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
-
+//db-Connection
 $dbServername = "localhost";
 $dbUser = "root";
 $dbPassword = "";

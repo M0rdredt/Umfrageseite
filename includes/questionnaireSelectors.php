@@ -1,10 +1,15 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
 include_once 'includes.php';
-function getQuestionnaireListByCourse($course, $conn)
+//returns a html-String which describes a table with all the Questionnaires for a course
+function getQuestionnaireTableByCourse($course, $conn)
 {
-
-    $toReturn = "";
+    $toReturn = "<table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Link</th>
+                        <th>Erzeuger</th>
+                    </tr>";
     $sql = "SELECT q.name as NAME, q.QUESTIONNAIRE_ID as QUESTIONNAIRE_ID, q.USER_ID as USER_ID
             FROM QUESTIONNAIRE Q, WORKS_WITH W 
             where Q.QUESTIONNAIRE_ID = W.QUESTIONNAIRE_ID
@@ -18,8 +23,13 @@ function getQuestionnaireListByCourse($course, $conn)
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         while ($row = mysqli_fetch_assoc($result)) {
-            $toReturn .= "<label><a href='questionnaireFront.php?ID=" . $row['QUESTIONNAIRE_ID'] . "'>". $row['NAME'] ."</a> von ".$row['USER_ID']."</label>";
+            $toReturn .= "<tr> 
+                            <td>".$row['NAME'] ."</td>
+                            <td><a href='questionnaireFront.php?ID=" . $row['QUESTIONNAIRE_ID'] . "'>Link</a></td>
+                            <td>".$row['USER_ID']. "</td>
+                           </tr>";
         }
     }
+    $toReturn .= "</table>";
     return $toReturn;
 }

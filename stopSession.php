@@ -1,5 +1,7 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
-include_once 'includes.php';
+//Logout
+session_start();
 session_destroy();
-echo "Abgemeldet";
+include_once 'includes.php';
+echo "<h1>Abgemeldet</h1>";

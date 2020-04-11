@@ -1,7 +1,7 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
+//mainly html for registration
 include_once 'includes.php';
-
 ?>
 <!Doctype html>
 <html>

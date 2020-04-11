@@ -1,5 +1,6 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
+//functions for logon with students and creators and registration
 include_once 'includes.php';
 $username = "";
 $password = "";
@@ -31,6 +32,7 @@ elseif (isset($_POST["register"])) {
 } else
     echo "Internal Error while login in";
 
+//function for login in Student
 function loginStudent($username, $conn){
     //echo "Test";
     $sql = "Select * 
@@ -52,10 +54,11 @@ function loginStudent($username, $conn){
         }
 
 }
-
+//TODO: impl
 function loginCreator($user, $pass, $conn){
 
 }
+//TODO: impl
 function register($username, $password, $conn){
 
 }

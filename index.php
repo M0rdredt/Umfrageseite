@@ -1,4 +1,7 @@
-<!--AUTHOR: Willi Hertel-->
+<!--AUTHOR: Willi Hertel
+index.html file is also Login
+-->
+
 <?php
 include_once 'includes.php';
 ?>
@@ -15,9 +18,6 @@ Wenn du dich als Studierender an diesem System anmelden möchtest gebe bitte unt
 Wenn du dich anmeldest um Fragebögen zu erzeugen melde dich bitte mit deinen Zugangsdaten an.
 <br>
 <br>
-<form action="stopSession.php">
-    <input type="submit" name="destroy" value="abmelden" title="abmelden">
-</form>
 <form method="post" action="loginRegisterUser.php">
     <label>Username:
         <input type="text" name="user"></label>
