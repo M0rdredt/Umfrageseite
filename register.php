@@ -11,19 +11,39 @@ include_once 'includes.php';
 </header>
 <body>
 <h1>Registrieren</h1>
-<form method="post" action="loginRegisterUser.php" >
-    <label>Username:
-        <input type="text" name="user">
-    </label>
-    <br>
-    <label>Password:
-        <input type="password" name="password">
-    </label>
-    <br>
-    <label>
-        Password bestätigen
-        <input type="password" name="passwordBest">
-    </label>
+<form method="post" action="loginRegisterUser.php">
+    <table>
+        <tr>
+            <td>
+                <label>Username:</label>
+            </td>
+            <td>
+                <label>
+                    <input type="text" name="user">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password:</label>
+            </td>
+            <td>
+                <label>
+                    <input type="password" name="password">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password bestätigen:</label>
+            </td>
+            <td>
+                <label>
+                    <input type="password" name="passwordBest">
+                </label>
+            </td>
+        </tr>
+    </table>
     <br>
     <input type="submit" name="registerPage" value="Registrieren" title="Registrieren">
 </form>

@@ -1,5 +1,5 @@
 <!--AUTHOR: Willi Hertel
-index.html file is also Login
+index.php file is also Login
 -->
 
 <?php
