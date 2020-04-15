@@ -5,21 +5,11 @@ include_once 'includes.php';
     <table>
         <tr>
             <td>
-                altes Passwort:
-            </td>
-            <td>
-                <label>
-                    <input type="password" name="oldPassword"  title="altes Passwort">
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td>
                 neues Passwort:
             </td>
             <td>
                 <label>
-                    <input type="password" name="newPassword"  title="neues Passwort">
+                    <input type="password" name="newPassword"  title="neues Passwort" required>
                 </label>
             </td>
         </tr>
@@ -29,7 +19,7 @@ include_once 'includes.php';
             </td>
             <td>
                 <label>
-                    <input type="password" name="newPasswordBest"  title="neues Passwort bestätigen">
+                    <input type="password" name="newPasswordBest"  title="neues Passwort bestätigen" required>
                 </label>
             </td>
         </tr>
