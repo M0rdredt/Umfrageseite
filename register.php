@@ -11,7 +11,7 @@ include_once 'includes.php';
 </header>
 <body>
 <h1>Registrieren</h1>
-<form method="post" action="loginRegisterUser.php">
+<form method="post" action="registerUser.php">
     <table>
         <tr>
             <td>
@@ -19,7 +19,7 @@ include_once 'includes.php';
             </td>
             <td>
                 <label>
-                    <input type="text" name="user">
+                    <input type="text" name="user" required>
                 </label>
             </td>
         </tr>
@@ -29,7 +29,7 @@ include_once 'includes.php';
             </td>
             <td>
                 <label>
-                    <input type="password" name="password">
+                    <input type="password" name="password" required>
                 </label>
             </td>
         </tr>
@@ -39,7 +39,7 @@ include_once 'includes.php';
             </td>
             <td>
                 <label>
-                    <input type="password" name="passwordBest">
+                    <input type="password" name="password2" required>
                 </label>
             </td>
         </tr>
