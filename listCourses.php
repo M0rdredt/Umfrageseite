@@ -28,6 +28,10 @@ Echo $listOfCourses;
 <form method="post" action="createCourse.php"> 
 	<label for="ABBREVIATION"> Hier kann ein neuer Kurs hinzugefügt werden:
 	<br>
-		<input id="ABBREVIATION" name="ABBREVIATION">
+		<input id="ABBREVIATION" name="ABBREVIATION"> 
+	<br>
+	Bitte geben Sie das Kurskuerzel ein
+	<br><br>
+	Durch drücken der Enter-Taste, wird der Kurs hinzugefügt.
 	</label>
 </form> 
