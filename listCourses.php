@@ -1,3 +1,5 @@
+
+<!--AUTHOR: David Horseling -->
 <?php
 include_once 'includes.php';
 $listOfCourses =	"<h1>Liste aller Kurse, die es gibt:</h1>

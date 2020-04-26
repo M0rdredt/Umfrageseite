@@ -1,4 +1,4 @@
-
+<!--AUTHOR: David Horseling -->
 <?php
 
 include_once 'includes.php';
