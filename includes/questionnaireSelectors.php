@@ -10,10 +10,12 @@ function getQuestionnaireTableByCourse($course, $conn)
                         <th>Link</th>
                         <th>Erzeuger</th>
                     </tr>";
-    $sql = "SELECT q.name as NAME, q.QUESTIONNAIRE_ID as QUESTIONNAIRE_ID, q.USER_ID as USER_ID
-            FROM QUESTIONNAIRE Q, WORKS_WITH W 
+    $sql = "SELECT *
+            FROM QUESTIONNAIRE Q, WORKS_WITH W, makes m
             where Q.QUESTIONNAIRE_ID = W.QUESTIONNAIRE_ID
-            and W.ABBREVIATION = ?";
+                and m.QUESTIONNAIRE_ID = q.QUESTIONNAIRE_ID
+                and W.ABBREVIATION = ?
+                and m.FINISHED != 1";
     $stmt = mysqli_prepare($conn, $sql);
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
