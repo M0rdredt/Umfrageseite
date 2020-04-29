@@ -21,7 +21,7 @@ if (isset($_POST["loginStudent"])) {
     try {
         Student::loginStudent($username, $connection);
         header(uriString("/studentPage.php"));
-    } catch (NoDataFoundException $e) {
+    } catch (Exception $e) {
         include_once "index.php";
         echo "Matrikelnummer " . $username . " nicht gefunden";
     }

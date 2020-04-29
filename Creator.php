@@ -52,7 +52,12 @@ class Creator extends DatabaseBaseObj
     //DESTRUCTOR
     private static function fetch($userId, $connection)
     {
+        try {
+
         $user = DatabaseBaseObj::fetchByPrimaryKey("creator", array($userId), $connection);
+        }catch (Exception $e){
+            throw $e;
+        }
         if (!(isset($user["USER_ID"]) or $user["PASSWORD"]))
             throw new InvalidArgumentException("No creator returned for given arguments");
         return new Creator($user["USER_ID"], $user["PASSWORD"]);

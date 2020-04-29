@@ -75,8 +75,14 @@ class Student
     //METHODS
     public static function fetch($userId, $connection)
     {
+        try {
+
         $row = DatabaseBaseObj::fetchByPrimaryKey("student", array($userId), $connection);
         return new Student($row["STUDENT_ID"], $row["NAME"], $row["ABBREVIATION"]);
+        }catch (Exception $exception)
+        {
+            throw $exception;
+        }
     }
 
     public function fetchAll($connection)
@@ -104,10 +110,10 @@ class Student
         $user= null;
         try {
             $user = self::fetch($userId, $connection);
-        } catch (NoDataFoundException $e) {
+            $_SESSION["User"] = $user;
+        } catch (Exception $e) {
             throw $e;
         }
-        $_SESSION["User"] = $user;
     }
 
     //ABSTRACT

@@ -35,7 +35,6 @@ class DatabaseBaseObj
             throw new InvalidArgumentException("Table " . $table . " does not have any primary keys or does not exist");
         //Execution/Binding-code
         $stmt2 = mysqli_prepare($connection, $sql2);
-        echo $sql2;
         if (!$stmt2){
             throw new MySqlException("Table " . $table . " does not return results for given keyValueArray!" .json_encode($keyValueArray)."<br>". $sql2);
         }
@@ -43,6 +42,8 @@ class DatabaseBaseObj
         mysqli_stmt_execute($stmt2);
         $result2 = mysqli_stmt_get_result($stmt2);
         $row = mysqli_fetch_assoc($result2);
+        if($row == null)
+            throw new Exception("blasdfasf");
         return $row;
     }
 
