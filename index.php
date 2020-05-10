@@ -35,7 +35,3 @@ Wenn du dich anmeldest um Fragebögen zu erzeugen melde dich bitte mit deinen Zu
 <?php
 ;
 
-array("user_id" => array("1", "2"), "name" => array());
-echo json_encode(DatabaseBaseObj::fetchTableDataBy2DimensionalArray("And","question", array("q_number" => array("1", "2"), "name" => array()), $connection));
-
-

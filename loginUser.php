@@ -40,10 +40,9 @@ if (isset($_POST["loginCreator"])) {
     } catch (InvalidArgumentException $e){
         include_once "index.php";
         echo "Username oder Passwort fehlt";
-
     } catch (Exception $e) {
         include_once "index.php";
-        echo $e -> getMessage();
+        echo "Nutzer existiert noch nicht bitte registrieren";
     }
 
 }
