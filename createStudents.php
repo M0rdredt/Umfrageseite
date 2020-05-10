@@ -18,7 +18,7 @@ $stmt = mysqli_prepare($connection, $sql);
 			echo "SQL statement ist fehlerhaft!";
 		} else {
 			$formToInsertStudent .="Hier den Kurs des Studenten auswählen: <br>
-			<select id=\"ABBREVIATION\" name=\"Kurs\">";
+			<select id=\"ABBREVIATION\" name=\"ABBREVIATION\">";
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -34,10 +34,13 @@ echo $formToInsertStudent;
 <br>
 Matrikelnummer:
 	<br>
-		<input id="STUDENT_ID" name="STUDENT_ID"> 
+		<input required id="STUDENT_ID" name="STUDENT_ID"> 
 	<br>
 Name:
 	<br>
-		<input id="NAME" name="NAME"> 
+		<input required id="NAME" name="NAME"> 
 	<br>
+	<br>
+	<input type="Submit" value="Student anlegen">
+
 </form>
