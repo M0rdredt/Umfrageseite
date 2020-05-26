@@ -19,7 +19,7 @@ if (!isset($_POST["password"])) {
 }
 if (isset($_POST["loginStudent"])) {
     try {
-        Student::loginStudent($username, $connection);
+        student_login($username, $connection);
         header(uriString("/studentPage.php"));
     } catch (Exception $e) {
         include_once "index.php";
@@ -29,7 +29,7 @@ if (isset($_POST["loginStudent"])) {
 }
 if (isset($_POST["loginCreator"])) {
     try {
-        Creator::loginCreator($username, $password, $connection);
+        creator_login($username, $password, $connection);
         header(uriString("/creatorPage.php"));
     } catch (NoDataFoundException $e) {
         include_once "index.php";

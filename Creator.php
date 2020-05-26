@@ -1,101 +1,29 @@
 <!--AUTHOR Willi Hertel>
 <?php
-
-class Creator extends DatabaseBaseObj
-{
-    //FIELD
-    private $userId;
-    private $password;
-
-    //GETTER
-
-    /**
-     * @return mixed
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-    //SETTER
-
-    /**
-     * @param mixed $userId
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    //CONSTRUCTOR
-    public function __construct($userId, $password)
-    {
-        $this->setPassword($password);
-        $this->setUserId($userId);
-    }
-
-    //DESTRUCTOR
-    private static function fetch($userId, $connection)
+    function creator_fetch($userId, $connection)
     {
         try {
 
-        $user = DatabaseBaseObj::fetchByPrimaryKey("creator", array($userId), $connection);
+        $creator = fetchByPrimaryKey("creator", array($userId), $connection);
         }catch (Exception $e){
             throw $e;
         }
-        if (!(isset($user["USER_ID"]) or $user["PASSWORD"]))
+        if (!(isset($creator["USER_ID"]) or $creator["PASSWORD"]))
             throw new InvalidArgumentException("No creator returned for given arguments");
-        return new Creator($user["USER_ID"], $user["PASSWORD"]);
+        return $creator;
     }
 
-    public function __destruct()
+    function creator_insert($user, $password, $connection)
     {
-    }
-
-    //METHODS
-
-    public static function insert($creator, $connection)
-    {
-        if ($creator instanceof Creator) {
-            $user = $creator->getUserId();
-            $password = $creator->getPassword();
             $sql = "Insert into creator values (?, ?)";
             $stmt = mysqli_prepare($connection, $sql);
             mysqli_stmt_bind_param($stmt, 'ss', $user, $password);
             if (!mysqli_stmt_execute($stmt)) {
                 throw new MySqlException(mysqli_error($connection));
             }
-        } else {
-            throw new \http\Exception\InvalidArgumentException("not Instance of Creator");
-        }
     }
 
-    public function insertAll($arrayOfCreators, $connection)
-    {
-
-    }
-
-    public function update($creator, $connection)
-    {
-
-    }
-
-    public static function loginCreator($userId, $password, $connection)
+    function creator_login($userId, $password, $connection)
     {
         $user = null;
         if($userId ==null or $password ==null)
@@ -103,23 +31,24 @@ class Creator extends DatabaseBaseObj
             throw new InvalidArgumentException("Password or Username is null");
         }
         try {
-            $user = Creator::fetch($userId, $connection);
+            $user = creator_fetch($userId, $connection);
         } catch (Exception $e) {
             throw $e;
         }
 
-        if (!password_verify($password, $user->getPassword())) {
+        if (!password_verify($password, $user["PASSWORD"])) {
             throw new WrongPasswordException("Password is wrong!");
         }
 
         $_SESSION["User"] = $user;
+        $_SESSION["Role"] = "C";
     }
 
-    public static function registerCreator($userId, $password, $password2, $connection)
+    function creator_register($userId, $password, $password2, $connection)
     {
         $user = "ranS";
         try {
-            $user = self::fetch($userId, $connection);
+            $user = creator_fetch($userId, $connection);
         } catch (Exception $e) {
             //No Data found is correct because fetch should return no data if user does not exist
             null;
@@ -129,20 +58,15 @@ class Creator extends DatabaseBaseObj
             throw new InvalidArgumentException("Username does already exist ");
 
         if ($password != $password2) {
-            throw new WrongPasswordException("Password2 does not equal password is wrong!");
+            throw new WrongPasswordException("Password2 does not equal password!");
         }
-        $user = new Creator($userId, password_hash($password, PASSWORD_BCRYPT));
+        $user = $userId;
         try {
-            self::insert($user, $connection);
+            creator_insert($user,password_hash($password, PASSWORD_BCRYPT) ,$connection);
         } catch (Exception $e) {
             throw $e;
         }
 
-
         $_SESSION["User"] = $user;
-    }
-
-    //ABSTRACT
-
-
-}
+        $_SESSION["Role"] = "C";
+        }

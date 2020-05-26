@@ -23,7 +23,7 @@ if (!isset($_POST["password2"])) {
 
 
 try {
-    Creator::registerCreator($username, $password, $password2, $connection);
+    creator_register($username, $password, $password2, $connection);
     header(uriString("/creatorPage.php"));
 } catch (WrongPasswordException $e) {
     include_once "register.php";

@@ -1,12 +1,10 @@
 <!--AUTHOR: WILLI HERTEL-->
 <?php
 
-class DatabaseBaseObj
-{
     //!!Don't give a User the chance to Input $table variable
     // => it can easily be used to read data one might not want everybody to see
     //KeyValueArray data will be ignored if more data got defined than there are PK columns
-    public static function fetchByPrimaryKey($table, $keyValueArray, $connection)
+    function fetchByPrimaryKey($table, $keyValueArray, $connection)
     {
         //Selects the names of all primary key columns for the given table
         $sql = "Select key_column_usage.column_name
@@ -49,7 +47,7 @@ class DatabaseBaseObj
 
     //returns the data for a given table which can be defined in a 2 Dimensional array Map
     //returns result as array with all rows
-    public static function fetchTableDataBy2DimensionalArray($defineOrAnd, $table, $twoDimensionalArray, $connection)
+    function fetchTableDataBy2DimensionalArray($defineOrAnd, $table, $twoDimensionalArray, $connection)
     {
         if (!(strtolower($defineOrAnd )== "or" or strtolower($defineOrAnd) == "and"))
             $defineOrAnd = "and";
@@ -81,4 +79,3 @@ class DatabaseBaseObj
         mysqli_stmt_execute($stmt);
         return mysqli_stmt_get_result($stmt);
     }
-}

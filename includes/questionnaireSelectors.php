@@ -4,7 +4,7 @@ include_once 'includes.php';
 //returns a html-String which describes a table with all the Questionnaires for a course
 function getQuestionnaireTableByCourse($course, $conn)
 {
-    $toReturn = "<table>
+    $toReturn = "<form method='post' action='../questionnaireFront.php'><table>
                     <tr>
                         <th>Name</th>
                         <th>Link</th>
@@ -27,11 +27,11 @@ function getQuestionnaireTableByCourse($course, $conn)
         while ($row = mysqli_fetch_assoc($result)) {
             $toReturn .= "<tr> 
                             <td>".$row['NAME'] ."</td>
-                            <td><a href='questionnaireFront.php?ID=" . $row['QUESTIONNAIRE_ID'] . "'>Link</a></td>
+                            <td><input type='submit' name='questionnaire_id' value ='" . $row['QUESTIONNAIRE_ID'] . "'></td>
                             <td>".$row['USER_ID']. "</td>
                            </tr>";
         }
     }
-    $toReturn .= "</table>";
+    $toReturn .= "</table></form>";
     return $toReturn;
 }

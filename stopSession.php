@@ -15,5 +15,4 @@ else{
     session_start();
     session_destroy();
     include_once 'includes.php';
-    echo "<h1>Abgemeldet</h1>";
 }

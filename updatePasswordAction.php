@@ -1,13 +1,14 @@
 <?php
 include_once 'includes.php';
-changePassword( $_POST['newPassword'], $_POST['newPasswordBest'], $_SESSION['username'], $connection);
 
+$creator = $_SESSION['User'];
+changePassword( $_POST['newPassword'], $_POST['newPasswordBest'], $creator, $connection);
 function changePassword( $newPassword, $newPasswordBest, $username, $connection){
     if ($newPassword!=$newPasswordBest){
-        header(uriString('updatePassword.php'));
-        echo 'Neues Passwort und Bestätigung müssen übereinstimmen';
+        header(uriString('/updatePassword.php'));
     }else{
         $newPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+        echo  $newPassword;
         $sql = 'update creator 
                 set password = ? 
                 where user_id = ? ';
@@ -17,7 +18,7 @@ function changePassword( $newPassword, $newPasswordBest, $username, $connection)
             include_once 'index.php';
             echo mysqli_error($connection);
         } else {
-            header(uriString("/creatorPage.php"));
+            //header(uriString("/creatorPage.php"));
         }
     }
 }
