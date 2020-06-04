@@ -8,7 +8,6 @@
               </form>";
     }else{
         if(isset($_SESSION["Role"]) ){
-            echo json_encode($_SESSION);
             if ($_SESSION["Role"] == "C"){
             echo "<form method='post' action='../stopSession.php'>
                 <input type='submit' name='logout' title='Abmelden' value='Abmelden'>

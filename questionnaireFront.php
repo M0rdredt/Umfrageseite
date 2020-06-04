@@ -1,9 +1,33 @@
 
 <?php
 include_once 'includes.php';
-echo "<form method='post' action='question.php'>
+$formQuestionEnd = false;
+if (isMaxQuestionNumberNull($_POST["questionnaire_id"], $connection)){
+    $formQuestionEnd = true;
+}
+echo "<form method='post' action='".QuestionEnd($formQuestionEnd)."'>
     <input type='hidden' name='q_number' value='1'>
     <input type='hidden' name='questionnaire_id' value='".$_POST["questionnaire_id"]."'>
     <input type='submit' name='start' value='start'>
 </form>
 ";
+
+function isMaxQuestionNumberNull($questionnaire, $connection){
+    $sql = "select max(q_number) as num from question where questionnaire_id = ?";
+    $stmt = mysqli_prepare($connection, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $questionnaire);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $value = mysqli_fetch_assoc($result);
+    if($value["num"] == null)
+    {
+        return true;
+    }
+}
+
+function QuestionEnd($formQuestionEnd){
+    if ($formQuestionEnd)
+        return "questionEnd.php";
+    else
+        return "question.php";
+}

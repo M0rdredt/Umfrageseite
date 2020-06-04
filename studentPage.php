@@ -3,7 +3,6 @@
 //Student can get his questionnaires from here
 include_once 'includes.php';
 if(($_SESSION["Role"] != "S")){
-    echo json_encode($_SESSION);
     //header(uriString("/index.php"));
 } else {
     $student = $_SESSION["User"];
