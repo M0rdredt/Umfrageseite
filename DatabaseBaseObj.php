@@ -41,7 +41,7 @@
         $result2 = mysqli_stmt_get_result($stmt2);
         $row = mysqli_fetch_assoc($result2);
         if($row == null)
-            throw new Exception("blasdfasf");
+            throw new Exception("Result is null");
         return $row;
     }
 

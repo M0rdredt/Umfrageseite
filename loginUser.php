@@ -31,9 +31,6 @@ if (isset($_POST["loginCreator"])) {
     try {
         creator_login($username, $password, $connection);
         header(uriString("/creatorPage.php"));
-    } catch (NoDataFoundException $e) {
-        include_once "index.php";
-        echo "User " . $username . " nicht gefunden";
     } catch (WrongPasswordException $e) {
         include_once "index.php";
         echo "Falsches Passwort";

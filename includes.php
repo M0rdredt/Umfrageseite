@@ -5,7 +5,6 @@
 //File should be used to get Header for page alternatively session.php can be used if you want header but not the rest
 include_once  "DatabaseBaseObj.php";
 include_once "MySqlException.php";
-include_once "NoDataFoundException.php";
 include_once "WrongPasswordException.php";
 include_once "Creator.php";
 include_once "Student.php";
