@@ -1,5 +1,6 @@
 <?php
 include_once "includes.php";
+include_once "InsertUpdateAnswer.php";
 $user = $_SESSION["User"];
 $studentId = $user["STUDENT_ID"];
 $q_number = $_POST["q_number"];
@@ -31,19 +32,7 @@ echo "
 <input type='hidden' name='questionnaire_id' value='".$_POST["questionnaire_id"]."'>
 </form>";
 
-function insert_update_answer($qNumber, $questionnaireID, $studentID, $connection, $value){
-    $sqlInsert = "insert into answers values (?, ?, ?, ?)";
-    $sqlUpdate = "update answers set answer = ? where student_id = ? and questionnaire_id = ? and q_number = ?;";
-    $stmtInsert = mysqli_prepare($connection, $sqlInsert);
-    mysqli_stmt_bind_param($stmtInsert, 'ssss', $studentID, $questionnaireID, $qNumber, $value);
-    if (!mysqli_stmt_execute($stmtInsert)) {
-        $stmtUpdate = mysqli_prepare($connection, $sqlUpdate);
-        mysqli_stmt_bind_param($stmtUpdate, 'ssss', $value, $studentID, $questionnaireID, $qNumber);
-        if (!mysqli_stmt_execute($stmtUpdate)) {
-            throw new Exception();
-        }
-    }
-}
+
 
 //returns 12345 if a value is present and 0 if an exception occured
 function isChecked($studentId, $questionnaireId, $q_number, $connection){
