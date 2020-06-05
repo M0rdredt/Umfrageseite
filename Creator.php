@@ -60,9 +60,10 @@
         if ($password != $password2) {
             throw new WrongPasswordException("Password2 does not equal password!");
         }
-        $user = $userId;
+
         try {
-            creator_insert($user,password_hash($password, PASSWORD_BCRYPT) ,$connection);
+            creator_insert($userId,password_hash($password, PASSWORD_BCRYPT) ,$connection);
+            $user = creator_fetch($userId, $connection);
         } catch (Exception $e) {
             throw $e;
         }
