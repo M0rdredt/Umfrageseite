@@ -6,3 +6,6 @@ include_once 'includes.php';
 <a href="createStudents.php" title="Neue Studenten anlegen"> Neue Studenten anlegen </a>
 <br>
 <a href="declareAmountOfQuestions.php" title="Neue Umfrage erstellen"> Neue Umfrage erstellen </a>
+
+<br>
+<a href="assignQuestionnaireToCourse.php" title="Umfrage Kursen zuweisen"> Umfrage Kursen zuweisen </a>
