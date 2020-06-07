@@ -11,5 +11,5 @@ if(($_SESSION["Role"] != "S")){
         ."Dies sind deine Fragebögen:<br>";
     echo getQuestionnaireTableByCourse($student["ABBREVIATION"], $connection);
 }
-
+include_once "EndOfPage.php";
 

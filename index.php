@@ -5,13 +5,6 @@ index.php file is also Login
 <?php
 include_once 'includes.php';
 ?>
-<!Doctype html>
-<html>
-<header>
-    <meta charset="UTF-8">
-    <title>Umfragetool</title>
-</header>
-<body>
 <h1>Login</h1>
 Wenn du dich als Studierender an diesem System anmelden möchtest gebe bitte unter Username deine Matrikelnummer an.
 <br>

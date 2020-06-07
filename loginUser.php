@@ -47,3 +47,4 @@ if (isset($_POST["register"])) {
     header(uriString('/register.php'));
     exit;
 }
+include_once "EndOfPage.php";

@@ -1,3 +1,4 @@
+<!--AUTHOR: WILLI HERTEL-->
 <?php
 include_once 'includes.php';
 
@@ -22,3 +23,4 @@ function changePassword( $newPassword, $newPasswordBest, $username, $connection)
         }
     }
 }
+include_once "EndOfPage.php";

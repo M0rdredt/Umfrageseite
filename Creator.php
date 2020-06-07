@@ -1,4 +1,4 @@
-<!--AUTHOR Willi Hertel>
+<!--AUTHOR Willi Hertel-->
 <?php
     function creator_fetch($userId, $connection)
     {

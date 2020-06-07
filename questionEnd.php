@@ -1,3 +1,4 @@
+<!--AUTHOR: WILLI HERTEL-->
 <?php
 include_once "includes.php";
 include_once "InsertUpdateAnswer.php";
@@ -12,3 +13,4 @@ echo "
     <input type='hidden' value='".$_POST["questionnaire_id"]."' name='questionnaireId'>
     <input type='submit' name='submit' value='Fragebogen abgeben'>
 </form>";
+include_once "EndOfPage.php";

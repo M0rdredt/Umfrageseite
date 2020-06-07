@@ -1,3 +1,4 @@
+<!--AUTHOR: WILLI HERTEL-->
 <?php
 include_once "includes.php";
 $sqlInsert = "update makes set comment = ?, finished = 1 where student_id = ? and  questionnaire_id = ?";
@@ -9,3 +10,4 @@ if(!mysqli_stmt_execute($stmtInsert)){
 }else{
     echo "Dein Fragebogen wurde erfolgreich abgegeben";
 }
+include_once "EndOfPage.php";

@@ -1,4 +1,4 @@
-
+<!--AUTHOR: WILLI HERTEL-->
 <?php
 include_once 'includes.php';
 $formQuestionEnd = false;
@@ -8,9 +8,10 @@ if (isMaxQuestionNumberNull($_POST["questionnaire_id"], $connection)){
 echo "<form method='post' action='".QuestionEnd($formQuestionEnd)."'>
     <input type='hidden' name='q_number' value='1'>
     <input type='hidden' name='questionnaire_id' value='".$_POST["questionnaire_id"]."'>
-    <input type='submit' name='start' value='start'>
+    <button type='submit' name='start' value='start'>Fragebogen beginnen</button>
 </form>
 ";
+include_once "EndOfPage.php";
 
 function isMaxQuestionNumberNull($questionnaire, $connection){
     $sql = "select max(q_number) as num from question where questionnaire_id = ?";

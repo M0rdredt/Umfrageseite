@@ -1,3 +1,4 @@
+<!--AUTHOR: WILLI HERTEL-->
 <?php
 include_once "includes.php";
 include_once "InsertUpdateAnswer.php";
@@ -9,29 +10,36 @@ if (isset($_POST["questionAnswer"])){
     insert_update_answer($q_number - 1 , $_POST['questionnaire_id'], $studentId, $connection, $value);
 }
 $formQuestionEnd = false;
-echo $q_number;
+$questionnaireNumber = $_POST["questionnaire_id"];
+echo getQuestion($q_number, $questionnaireNumber, $connection);
 
-$isChecked1 = isChecked($studentId, $_POST["questionnaire_id"], $q_number, $connection) == 1 ? "checked":" ";
-$isChecked2 = isChecked($studentId, $_POST["questionnaire_id"], $q_number, $connection) == 2 ? "checked":" ";
-$isChecked3 = isChecked($studentId, $_POST["questionnaire_id"], $q_number, $connection) == 3 ? "checked":" ";
-$isChecked4 = isChecked($studentId, $_POST["questionnaire_id"], $q_number, $connection) == 4 ? "checked":" ";
-$isChecked5 = isChecked($studentId, $_POST["questionnaire_id"], $q_number, $connection) == 5 ? "checked":" ";
+$isChecked1 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 1 ? "checked":" ";
+$isChecked2 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 2 ? "checked":" ";
+$isChecked3 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 3 ? "checked":" ";
+$isChecked4 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 4 ? "checked":" ";
+$isChecked5 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 5 ? "checked":" ";
 $q_number++;
-if (isMaxQuestionNumber($q_number, $_POST["questionnaire_id"], $connection)){
+if (isMaxQuestionNumber($q_number, $questionnaireNumber, $connection)){
     $formQuestionEnd = true;
 }
 echo "
 <form method='post' action='".QuestionEnd($formQuestionEnd)."'>
-<input type='submit' name='NextQuestion'>
+<label>1: </label>
 <input type='radio' name='questionAnswer' value='1'".$isChecked1.">
+<label>2: </label>
 <input type='radio' name='questionAnswer' value='2'".$isChecked2.">
+<label>3: </label>
 <input type='radio' name='questionAnswer' value='3'".$isChecked3.">
+<label>4: </label>
 <input type='radio' name='questionAnswer' value='4'".$isChecked4.">
+<label>5: </label>
 <input type='radio' name='questionAnswer' value='5'".$isChecked5.">
+<br>
+<input type='submit' name='NextQuestion' value='Antwort senden'>
 <input type='hidden' name='q_number' value='".$q_number."'>
-<input type='hidden' name='questionnaire_id' value='".$_POST["questionnaire_id"]."'>
+<input type='hidden' name='questionnaire_id' value='".$questionnaireNumber."'>
 </form>";
-
+include_once "EndOfPage.php";
 
 
 //returns 12345 if a value is present and 0 if an exception occured
@@ -63,6 +71,12 @@ function QuestionEnd($formQuestionEnd){
         return "questionEnd.php";
     else
         return "question.php";
+}
+
+function getQuestion($qNumber, $questionnaireNumber, $connection){
+
+    $question = fetchByPrimaryKey("question", array($questionnaireNumber, $qNumber),$connection);
+    return $question["QUESTION"];
 }
 
 

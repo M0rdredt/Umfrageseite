@@ -1,4 +1,11 @@
 <!--AUTHOR: Willi Hertel-->
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Umfragetool</title>
+</head>
+<body>
 <?php
 //TODO: please do not delete this TODO everything that might be useful for every page should be contained within here
 //PLEASE TEST EVERYTHING IF YOU ADD SOMETHING INTO THIS FILE BECAUSE OF UNFORESEEN CONSEQUENCES

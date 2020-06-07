@@ -1,3 +1,4 @@
+<!--AUTHOR: WILLI HERTEL-->
 <?php
 function insert_update_answer($qNumber, $questionnaireID, $studentID, $connection, $value){
 $sqlInsert = "insert into answers values (?, ?, ?, ?)";

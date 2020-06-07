@@ -1,4 +1,4 @@
-<!--AUTHOR Willi Hertel>
+<!--AUTHOR Willi Hertel-->
 
 <?php
     //METHODS

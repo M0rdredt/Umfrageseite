@@ -28,3 +28,5 @@ include_once 'includes.php';
     </table>
     <input type="submit" name="setNewPassword" title="Neues Passwort setzen" value="Neues Passwort setzen">
 </form>
+<?php
+include_once "EndOfPage.php";

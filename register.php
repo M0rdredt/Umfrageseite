@@ -3,13 +3,6 @@
 //mainly html for registration
 include_once 'includes.php';
 ?>
-<!Doctype html>
-<html>
-<header>
-    <meta charset="UTF-8">
-    <title>Umfragetool</title>
-</header>
-<body>
 <h1>Registrieren</h1>
 <form method="post" action="registerUser.php">
     <table>

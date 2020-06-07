@@ -29,7 +29,7 @@ function getQuestionnaireTableByCourse($course, $conn)
         while ($row = mysqli_fetch_assoc($result)) {
             $toReturn .= "<tr> 
                             <td>".$row['NAME'] ."</td>
-                            <td><input type='submit' name='questionnaire_id' value ='" . $row['QUESTIONNAIRE_ID'] . "'></td>
+                            <td><button type='submit' name='questionnaire_id' value ='" . $row['QUESTIONNAIRE_ID'] . "'>Fragebogen beginnen</button></td>
                             <td>".$row['USER_ID']. "</td>
                            </tr>";
         }
