@@ -26,7 +26,9 @@ $sql = "Insert into student values (?,?,?)";
             mysqli_stmt_bind_param($stmt, 'sss', $STUDENT_ID, $NAME, $ABBREVIATION);
             if (!mysqli_stmt_execute($stmt)) {
                 echo "STUDENT_ID existiert bereits";
-            }
-header( uriString("/createStudents.php"));
+            } else {
+				header( uriString("/createStudents.php"));
+			}
+
 
 ?>

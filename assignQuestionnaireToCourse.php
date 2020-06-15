@@ -2,7 +2,7 @@
 <?php
 include_once 'includes.php';
 
-echo "<h1>Hier können Studenten angelegt werden, die einem Kurs angehören</h1>";
+echo "<h1>Hier können Umfragen einem Kurs zugewiesen werden</h1>";
 
 $formToAssignQuestionnaire =	"<form method=\"post\" action=\"assignQuestionnaire.php\">";
 		

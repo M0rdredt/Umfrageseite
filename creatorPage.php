@@ -9,3 +9,9 @@ include_once 'includes.php';
 
 <br>
 <a href="assignQuestionnaireToCourse.php" title="Umfrage Kursen zuweisen"> Umfrage Kursen zuweisen </a>
+
+<br>
+<a href="addQuestionsToQuestionnaire.php" title="Fragen zu Umfrage hinzufügen"> Fragen zu Umfrage hinzufügen </a>
+
+<br>
+<a href="deleteQuestionsFromQuestionnaire.php" title="Fragen aus Umfrage löschen"> Fragen aus Umfrage löschen </a>

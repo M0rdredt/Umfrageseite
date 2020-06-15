@@ -1,7 +1,7 @@
 <!--AUTHOR: David Horseling -->
 <?php
 include_once "includes.php";
-$course=null;
+
 mysqli_autocommit($connection, false);
 
 if (!isset($_POST["NAME"])) {
