@@ -7,7 +7,8 @@ $studentId = $user["STUDENT_ID"];
 $q_number = $_POST["q_number"];
 if (isset($_POST["questionAnswer"])){
     $value = $_POST["questionAnswer"];
-    insert_update_answer($q_number - 1 , $_POST['questionnaire_id'], $studentId, $connection, $value);
+    insert_update_answer($_POST["q_numberOld"] , $_POST['questionnaire_id'], $studentId, $connection, $value);
+
 }
 $formQuestionEnd = false;
 $questionnaireNumber = $_POST["questionnaire_id"];
@@ -18,8 +19,9 @@ $isChecked2 = isChecked($studentId, $questionnaireNumber, $q_number, $connection
 $isChecked3 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 3 ? "checked":" ";
 $isChecked4 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 4 ? "checked":" ";
 $isChecked5 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 5 ? "checked":" ";
-$q_number++;
-if (isMaxQuestionNumber($q_number, $questionnaireNumber, $connection)){
+$q_numberOld = $q_number;
+$q_number = fetchQuestionNumber($_POST["q_number"], $questionnaireNumber, $connection);
+if (!$q_number){
     $formQuestionEnd = true;
 }
 echo "
@@ -37,6 +39,7 @@ echo "
 <br>
 <input type='submit' name='NextQuestion' value='Antwort senden'>
 <input type='hidden' name='q_number' value='".$q_number."'>
+<input type='hidden' name='q_numberOld' value='".$q_numberOld."'>
 <input type='hidden' name='questionnaire_id' value='".$questionnaireNumber."'>
 </form>";
 include_once "EndOfPage.php";
@@ -78,6 +81,21 @@ function getQuestion($qNumber, $questionnaireNumber, $connection){
     $question = fetchByPrimaryKey("question", array($questionnaireNumber, $qNumber),$connection);
     return $question["QUESTION"];
 }
+
+
+function fetchQuestionNumber($QNumberPrev, $questionnaireNumber, $connection){
+    $sql = "select q_number from question where q_number > ? and questionnaire_id = ? order by q_number limit 1";
+    $stmt = mysqli_prepare($connection, $sql);
+    mysqli_stmt_bind_param($stmt, "ss", $QNumberPrev ,$questionnaireNumber);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $value = mysqli_fetch_assoc($result);
+    if(!$value) {
+        return null;
+    }else{
+    return $value["q_number"];
+    }
+    }
 
 
 
