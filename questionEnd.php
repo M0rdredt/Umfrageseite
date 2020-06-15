@@ -4,7 +4,7 @@ include_once "includes.php";
 include_once "InsertUpdateAnswer.php";
 $user = $_SESSION["User"];
 if (isset($_POST["questionAnswer"])){
-insert_update_answer($_POST["q_number"] - 1 , $_POST["questionnaire_id"], $user["STUDENT_ID"], $connection, $_POST["questionAnswer"]);
+insert_update_answer($_POST["q_numberOld"] , $_POST["questionnaire_id"], $user["STUDENT_ID"], $connection, $_POST["questionAnswer"]);
 }
 echo "
 <form method='post' action='finishQuestionnaire.php' id='submitForm'>
