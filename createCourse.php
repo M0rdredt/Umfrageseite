@@ -15,8 +15,8 @@ $sql = "Insert into course values (?)";
             mysqli_stmt_bind_param($stmt, 's', $abbreviation);
             if (!mysqli_stmt_execute($stmt)) {
                 echo "Kurs existiert bereits";
-            }
-header( uriString("/listCourses.php"));
-
+            } else {
+				header( uriString("/listCourses.php"));
+			}
 
 ?>
