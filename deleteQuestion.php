@@ -2,14 +2,14 @@
 <?php
 include_once 'includes.php';
 
-//Überprüfung ob auch tatsächlich ein Name der Umfrage mitgegeben wurde
+//Überprüfung ob auch tatsächlich ein Name der Umfrage mitgegeben wurde, für den Fall, dass etwas schief gelaufen ist
 if (!isset($_POST["NAME"])) {
     echo "No NAME";
 } else {
     $NAME = $_POST["NAME"];
 }
 
-//Hier Questionnaire_ID der Umfrage ermitteln, das ist nötig da Fragen schwach sind
+//Hier Questionnaire_ID der Umfrage ermitteln, das ist nötig da Fragen schwach an der QUESTIONNAIRE_ID sind
 $SQL_QUESTIONNAIRE_ID = "select QUESTIONNAIRE_ID from Questionnaire WHERE NAME = ?";
 $stmt = mysqli_prepare($connection, $SQL_QUESTIONNAIRE_ID);
 		mysqli_stmt_bind_param($stmt, 's', $NAME);
@@ -22,7 +22,7 @@ $formToDeleteQuestion =	"Wählen Sie die zu löschende Frage aus. <br>
 								<form method=\"post\" action=\"deleteQuestionTransaction.php\"> 
 								<input type='hidden' required name='QUESTIONNAIRE_ID' value='" . $QUESTIONNAIRE_ID . "'>";
 								
-								
+//Im Folgenden werden die Fragen über SQL ausgewählt, die an der Umfrage hängen. Übergeben wird die Q_NUMBER bei der Auswahl der Frage in der Combo Box								
 $sql = "select Q_NUMBER, QUESTION from QUESTION where QUESTIONNAIRE_ID = ?";
 $stmt = mysqli_prepare($connection, $sql);
         mysqli_stmt_execute($stmt);

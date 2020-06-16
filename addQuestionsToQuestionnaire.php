@@ -7,7 +7,7 @@ echo "<h1>Hier können Sie die Umfrage auswählen, der Sie die Frage hinzufügen
 		
 $formToAddQuestion =	"<form method=\"post\" action=\"addNewQuestion.php\">";
 		
-
+//Diese Daten werden benötigt, um nur die vom Creator erstellten Umfragen anzeigen zu lassen
 $USER = $_SESSION["User"];
 $USER_ID = $USER["USER_ID"];
 //Hier werden alle Umfragen über eine Combo Box zur Auswahl gestellt, die von dem aktuellen Nutzer erstellt wurden und noch von keinem Studenten

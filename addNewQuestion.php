@@ -6,21 +6,21 @@ include_once 'includes.php';
 
 mysqli_autocommit($connection, false);
 
-//Überprüfung ob auch tatsächlich ein Name der Umfrage mitgegeben wurde
+//Überprüfung ob auch tatsächlich ein Name der Umfrage mitgegeben wurde, falls etwas schiefgegangen wäre
 if (!isset($_POST["NAME"])) {
     echo "No NAME";
 } else {
     $NAME = $_POST["NAME"];
 }
 
-//Überprüfung ob auch tatsächlich eine Frage mitgegeben wurde
+//Überprüfung ob auch tatsächlich eine Frage mitgegeben wurde, falls etwas schiefgegangen wäre
 if (!isset($_POST["QUESTION"])) {
     echo "No Question";
 } else {
 	$QUESTION = $_POST["QUESTION"];
 }
 
-//Hier Questionnaire_ID der Umfrage ermitteln, das ist nötig da Fragen schwach sind
+//Hier Questionnaire_ID der Umfrage ermitteln, das ist nötig da Fragen schwach an der QUESTIONNAIRE_ID sind
 $SQL_QUESTIONNAIRE_ID = "select QUESTIONNAIRE_ID from Questionnaire WHERE NAME = ?";
 $stmt = mysqli_prepare($connection, $SQL_QUESTIONNAIRE_ID);
 		mysqli_stmt_bind_param($stmt, 's', $NAME);
@@ -29,7 +29,7 @@ $stmt = mysqli_prepare($connection, $SQL_QUESTIONNAIRE_ID);
 		$QUESTIONNAIRE_ID_Array = mysqli_fetch_assoc($result);
 		$QUESTIONNAIRE_ID = $QUESTIONNAIRE_ID_Array['QUESTIONNAIRE_ID'];
 
-//Hier die Frage ID ermitteln, die die neue Frage bekommen muss
+//Hier die Frage ID ermitteln, die die neue Frage bekommen muss, sprich man ermittelt die bisher höchste Q_NUMBER die an dieser QUESTIONNAIRE_ID hängt und erhöht sie um 1
 $SQL_Q_NUMBER = "select max(Q_NUMBER) as maxQ_NUMBER from Question WHERE QUESTIONNAIRE_ID = ? ";
 $stmtQ_NUMBER = mysqli_prepare($connection, $SQL_Q_NUMBER);
 		mysqli_stmt_bind_param($stmtQ_NUMBER, 's', $QUESTIONNAIRE_ID);
@@ -40,7 +40,7 @@ $stmtQ_NUMBER = mysqli_prepare($connection, $SQL_Q_NUMBER);
 $Q_NUMBER = $row["maxQ_NUMBER"];
 $Q_NUMBER ++;
 
-//Hier neue Frage einfügen mit allen Werten
+//Hier wird die neue Frage eingefügt mit allen Werten
 
 $sql = "Insert into QUESTION values (?,?,?)";
             $stmt = mysqli_prepare($connection, $sql);
@@ -51,7 +51,7 @@ $sql = "Insert into QUESTION values (?,?,?)";
 				echo "Frage wurde hinzugefügt.";
 			}
 
-
+//Hier wird das Ganze commited
 mysqli_commit($connection); 
 mysqli_autocommit($connection, true);
 ?>

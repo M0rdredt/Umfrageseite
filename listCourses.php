@@ -4,7 +4,7 @@
 include_once 'includes.php';
 $listOfCourses =	"<h1>Liste aller Kurse, die es gibt:</h1>
 					<ul>";
-		
+//Im Folgenden werden alle Kurse die existieren ausgegeben		
 $sql = "select *
 		from course";
 $stmt = mysqli_prepare($connection, $sql);
@@ -26,11 +26,12 @@ $stmt = mysqli_prepare($connection, $sql);
 		}
 		
 Echo $listOfCourses;
+// Im Folgenden kann ein neuer Kurs angelegt werden
 ?>
 <form method="post" action="createCourse.php"> 
 	<label for="ABBREVIATION"> Hier kann ein neuer Kurs hinzugefügt werden:
 	<br>
-		<input id="ABBREVIATION" name="ABBREVIATION"> 
+		<input required id="ABBREVIATION" name="ABBREVIATION"> 
 	<br>
 	Bitte geben Sie das Kurskuerzel ein
 	<br><br>

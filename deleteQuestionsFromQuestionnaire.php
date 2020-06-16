@@ -4,10 +4,10 @@ include_once 'includes.php';
 
 echo "<h1>Hier können Sie die Umfrage auswählen, aus der Sie eine Frage löschen möchten.</h1>";
 
-		
+//Das HTML wird in diese Variable geschrieben um es am Ende über Echo auszugeben		
 $formToDeleteQuestion =	"<form method=\"post\" action=\"deleteQuestion.php\">";
 		
-
+//Diese Daten brauche ich um nur die Umfragen anzeigen zu lassen, die von diesem Creator erstellt wurden
 $USER = $_SESSION["User"];
 $USER_ID = $USER["USER_ID"];
 // Hier werden alle Umfragen über eine Combo Box zur Auswahl gestellt, die von dem aktuellen Nutzer erstellt wurden und noch von keinem Studenten

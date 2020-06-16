@@ -6,7 +6,7 @@ include_once 'includes.php';
 echo "<h1>Hier können Studenten angelegt werden, die einem Kurs angehören</h1>";
 
 $formToInsertStudent =	"<form method=\"post\" action=\"insertStudent.php\">";
-		
+//Im Folgenden werden alle Kurse über eine Combo Box zur Auswahl gestellt	
 $sql = "select *
 		from course";
 $stmt = mysqli_prepare($connection, $sql);
@@ -30,6 +30,7 @@ $stmt = mysqli_prepare($connection, $sql);
 	
 
 echo $formToInsertStudent;
+//Im Folgenden können noch die Matrikelnummer und der Name des Studenten festgelegt werden.
 ?>
 <br>
 Matrikelnummer:

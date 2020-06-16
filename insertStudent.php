@@ -2,7 +2,7 @@
 <?php
 include_once "includes.php";
 $course=null;
-
+//Im Folgenden wird überprüft, ob alle benötigten Werte erfolgreich übergeben wurden.
 if (!isset($_POST["STUDENT_ID"])) {
     echo "No student id";
 } else {
@@ -20,7 +20,7 @@ if (!isset($_POST["ABBREVIATION"])) {
 } else {
     $ABBREVIATION = $_POST["ABBREVIATION"];
 }
-
+//Im Folgenden wird der Student dann in die Datenbank gespeichert
 $sql = "Insert into student values (?,?,?)";
             $stmt = mysqli_prepare($connection, $sql);
             mysqli_stmt_bind_param($stmt, 'sss', $STUDENT_ID, $NAME, $ABBREVIATION);
