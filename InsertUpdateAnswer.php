@@ -1,5 +1,6 @@
 <!--AUTHOR: WILLI HERTEL-->
 <?php
+//inserted oder updated die Antwort eines Studenten zu einem Fragebogen
 function insert_update_answer($qNumber, $questionnaireID, $studentID, $connection, $value){
 $sqlInsert = "insert into answers values (?, ?, ?, ?)";
 $sqlUpdate = "update answers set answer = ? where student_id = ? and questionnaire_id = ? and q_number = ?;";

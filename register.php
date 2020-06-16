@@ -2,6 +2,7 @@
 <?php
 //mainly html for registration
 include_once 'includes.php';
+//form für register
 ?>
 <h1>Registrieren</h1>
 <form method="post" action="registerUser.php">

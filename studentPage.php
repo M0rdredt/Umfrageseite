@@ -1,6 +1,6 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
-//Student can get his questionnaires from here
+//Student bekommt seine Fragebögen hier
 include_once 'includes.php';
 if(($_SESSION["Role"] != "S")){
     //header(uriString("/index.php"));

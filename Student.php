@@ -1,7 +1,7 @@
 <!--AUTHOR Willi Hertel-->
 
 <?php
-    //METHODS
+    //holt Student aus der Datenbank
     function student_fetch($userId, $connection)
     {
         try {
@@ -12,7 +12,7 @@
             throw $exception;
         }
     }
-
+    //führt login für einen Studenten durch
     function student_login($userId, $connection)
     {
         $user= null;

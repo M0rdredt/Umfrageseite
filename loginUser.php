@@ -1,6 +1,6 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
-//functions for logon with students and creators and registration
+//kümmert sich um den Login serverseitig und händelt diverse Fehlerfälle
 include_once "includes.php";
 include_once "Student.php";
 include_once "Creator.php";

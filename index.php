@@ -1,5 +1,5 @@
 <!--AUTHOR: Willi Hertel
-index.php file is also Login
+index.php dient als Login für diverse Usertypen
 -->
 
 <?php

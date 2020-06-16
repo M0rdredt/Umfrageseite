@@ -1,5 +1,6 @@
 <!--AUTHOR: WILLI HERTEL-->
 <?php
+//kümmert sich aum die Abgabe des Fragebogens
 include_once "includes.php";
 $sqlInsert = "update makes set comment = ?, finished = 1 where student_id = ? and  questionnaire_id = ?";
 $stmtInsert = mysqli_prepare($connection, $sqlInsert);

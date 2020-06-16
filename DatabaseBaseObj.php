@@ -44,38 +44,3 @@
             throw new Exception("Result is null");
         return $row;
     }
-
-    //returns the data for a given table which can be defined in a 2 Dimensional array Map
-    //returns result as array with all rows
-    function fetchTableDataBy2DimensionalArray($defineOrAnd, $table, $twoDimensionalArray, $connection)
-    {
-        if (!(strtolower($defineOrAnd )== "or" or strtolower($defineOrAnd) == "and"))
-            $defineOrAnd = "and";
-        $sql = "select * from ".mysqli_real_escape_string($connection, $table) ." where 1=1 ";
-        foreach ($twoDimensionalArray as $column => $values){
-            $string = " ".$defineOrAnd." ".mysqli_real_escape_string($connection, $column)." in (";
-            $i = 0;
-            $returnEmptyString = false;
-            if(count($values) == 0)
-            {
-                $returnEmptyString = true;
-            }
-            foreach ($values as $value){
-                $string .= "'". mysqli_real_escape_string($connection, $value)."'";
-                if(count($values)-1 == $i){
-                    $string.=mysqli_real_escape_string($connection,  ")");
-                }else{
-                    $string.=", ";
-                }
-                $i++;
-            }
-            if($returnEmptyString)
-                $string = "";
-            $sql.=$string;
-        }
-        $stmt = mysqli_prepare($connection, $sql);
-        if(!$stmt)
-            throw new UnexpectedValueException("generated unexpected sql statement: " .$sql);
-        mysqli_stmt_execute($stmt);
-        return mysqli_stmt_get_result($stmt);
-    }

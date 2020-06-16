@@ -1,7 +1,7 @@
 <!--AUTHOR: WILLI HERTEL-->
 <?php
 include_once 'includes.php';
-
+//Code zum updaten des Passworts
 $creator = $_SESSION['User'];
 changePassword( $_POST['newPassword'], $_POST['newPasswordBest'], $creator, $connection);
 function changePassword( $newPassword, $newPasswordBest, $username, $connection){

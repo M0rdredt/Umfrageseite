@@ -1,6 +1,9 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
-//Header if session exists: Login
+//Header wenn session exitiert: Login
+//Header wenn session exitiert und R = "C": Abmelden, Paswort, zur Hauptseite springen
+//Header wenn session exitiert und R = "S": Abmelden, zur Hauptseite springen
+
 
     if (!isset($_SESSION["User"])){
         echo "<form action='../index.php'>
@@ -21,7 +24,4 @@
                 <input type='submit' name='goToSMainPage' title='Zur Studenten-Hauptseite springen' value='Zur Studenten-Hauptseite springen'>
               </form>";
             }}
-
-       else
-            echo "asdhfjasldujfhj";
     }

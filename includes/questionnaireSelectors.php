@@ -1,7 +1,7 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
 include_once 'includes.php';
-//returns a html-String which describes a table with all the Questionnaires for a course
+//gibt einen html String zurück mit allen Fragebögen zu Kurs
 function getQuestionnaireTableByCourse($course, $conn)
 {
     $toReturn = "<form method='post' action='../questionnaireFront.php'><table>

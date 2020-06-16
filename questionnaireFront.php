@@ -1,6 +1,7 @@
 <!--AUTHOR: WILLI HERTEL-->
 <?php
 include_once 'includes.php';
+//Formular bevor der eigentliche Fragebogen begonnen wird
 $formQuestionEnd = false;
 if (isMaxQuestionNumberNull($_POST["questionnaire_id"], $connection)){
     $formQuestionEnd = true;
@@ -13,6 +14,9 @@ echo "<form method='post' action='".QuestionEnd($formQuestionEnd)."'>
 ";
 include_once "EndOfPage.php";
 
+//wenn keine Frage existiert wird direkt auf die Endeseite gesprungen(sollte jetzt hinfällig sein
+// da keine Fragebögen ohne Fragen existieren können sollten
+// und dient nur noch dazu um in diesem Fall nicht in einen vermeidbaren Fehler zu laufen)
 function isMaxQuestionNumberNull($questionnaire, $connection){
     $sql = "select max(q_number) as num from question where questionnaire_id = ?";
     $stmt = mysqli_prepare($connection, $sql);
@@ -33,7 +37,7 @@ function QuestionEnd($formQuestionEnd){
         return "question.php";
 }
 
-
+//holt die minimale Fragenummer um q_number inital zu befüllen
 function getMinQuestionNumber($questionnaire,$connection){
     $sql = "select min(q_number) as num from question where questionnaire_id = ?";
     $stmt = mysqli_prepare($connection, $sql);

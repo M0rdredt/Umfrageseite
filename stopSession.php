@@ -1,6 +1,6 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
-//Logout
+//Logout und Sprung zu diversen Funktionalitäten wenn Knopf im Header aktiviert wird
 if(isset($_POST['updatePasswort'])){
     include_once 'includes.php';
     header(uriString('/updatePassword.php'));

@@ -1,9 +1,9 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
-//obligatory session start
+//obligatorischer session start
 session_start();
 include_once 'pageHeader.php';
-// if page not in index or register show page
+// wenn Seite nicht in inhdex, register, loginUser, registerUser und keine Session dann Fehler
 if (!isset($_SESSION["User"])and !($_SERVER['PHP_SELF'] == "/index.php"
         xor $_SERVER['PHP_SELF'] == '/register.php'
         xor $_SERVER['PHP_SELF'] == '/loginUser.php'

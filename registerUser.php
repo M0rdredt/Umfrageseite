@@ -1,5 +1,6 @@
 <!--AUTHOR: WILLI HERTEL-->
 <?php
+//Fehlerhandling bei der registrierung
 include_once "includes.php";
 
 $password= null;

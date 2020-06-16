@@ -1,5 +1,6 @@
 <!--AUTHOR: WILLI HERTEL-->
 <?php
+//dient um Fragebögern entgültig abzuschließen
 include_once "includes.php";
 include_once "InsertUpdateAnswer.php";
 $user = $_SESSION["User"];

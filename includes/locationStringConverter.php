@@ -1,6 +1,6 @@
 <!--AUTHOR: Willi Hertel-->
 <?php
-//for header function directly gives path for given file
+//für header() gibt direkt Pfad zu php-Datei
 function uriString($file){
 if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
 $uri = 'https://';

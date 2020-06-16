@@ -2,6 +2,7 @@
 
 <?php
 include_once 'includes.php';
+//Form zum updaten des Passworts
 ?>
 <form method="post" action="updatePasswordAction.php">
     <table>

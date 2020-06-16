@@ -14,11 +14,13 @@ $formQuestionEnd = false;
 $questionnaireNumber = $_POST["questionnaire_id"];
 echo getQuestion($q_number, $questionnaireNumber, $connection);
 
+//belegt die isChecked für unten mit ihrem entsprechenden Checked oder nicht checked
 $isChecked1 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 1 ? "checked":" ";
 $isChecked2 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 2 ? "checked":" ";
 $isChecked3 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 3 ? "checked":" ";
 $isChecked4 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 4 ? "checked":" ";
 $isChecked5 = isChecked($studentId, $questionnaireNumber, $q_number, $connection) == 5 ? "checked":" ";
+//wir braucen sowohl alt als auch neu da Fragenummern nach dem löschen von Fragen nicht unbedingt Konsekutiv sind
 $q_numberOld = $q_number;
 $q_number = fetchQuestionNumber($_POST["q_number"], $questionnaireNumber, $connection);
 if (!$q_number){
@@ -45,7 +47,7 @@ echo "
 include_once "EndOfPage.php";
 
 
-//returns 12345 if a value is present and 0 if an exception occured
+//gibt 1/2/3/4/5 zurück wenn ein Wert existiert(für die übergebenen PAramter) oder 0 wenn ein Fehler aufgetreten ist
 function isChecked($studentId, $questionnaireId, $q_number, $connection){
     try {
         $row = fetchByPrimaryKey("answers", array($studentId,$questionnaireId, $q_number ), $connection);
@@ -55,6 +57,7 @@ function isChecked($studentId, $questionnaireId, $q_number, $connection){
     return $row["ANSWER"];
 }
 
+//testet ob eine übergebene Fragnummer die maximale Fragenummer ist
 function isMaxQuestionNumber($qNumber, $questionnaire, $connection){
     $sql = "select max(q_number) as num from question where questionnaire_id = ?";
     $stmt = mysqli_prepare($connection, $sql);
@@ -68,7 +71,7 @@ function isMaxQuestionNumber($qNumber, $questionnaire, $connection){
         return true;}
 }
 
-
+//existiert weil wir weiter oben möglichst einfaches form wollen
 function QuestionEnd($formQuestionEnd){
     if ($formQuestionEnd)
         return "questionEnd.php";
@@ -76,13 +79,14 @@ function QuestionEnd($formQuestionEnd){
         return "question.php";
 }
 
+//holt einfach nur den Fragestring aus DB für fetchByPrimaryKey siehe DatabaseBaseObj
 function getQuestion($qNumber, $questionnaireNumber, $connection){
 
     $question = fetchByPrimaryKey("question", array($questionnaireNumber, $qNumber),$connection);
     return $question["QUESTION"];
 }
 
-
+//holt Fragenummer auf basis der vorherigen Fragenummer
 function fetchQuestionNumber($QNumberPrev, $questionnaireNumber, $connection){
     $sql = "select q_number from question where q_number > ? and questionnaire_id = ? order by q_number limit 1";
     $stmt = mysqli_prepare($connection, $sql);

@@ -7,9 +7,7 @@
 </head>
 <body>
 <?php
-//TODO: please do not delete this TODO everything that might be useful for every page should be contained within here
-//PLEASE TEST EVERYTHING IF YOU ADD SOMETHING INTO THIS FILE BECAUSE OF UNFORESEEN CONSEQUENCES
-//File should be used to get Header for page alternatively session.php can be used if you want header but not the rest
+//diverse includes die überall obligatorisch oder zumindest nützlich sind
 include_once  "DatabaseBaseObj.php";
 include_once "MySqlException.php";
 include_once "WrongPasswordException.php";
