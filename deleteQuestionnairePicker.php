@@ -21,7 +21,7 @@ $stmt = mysqli_prepare($connection, $sql2);
 			echo "SQL statement ist fehlerhaft!";
 		} else {
 			mysqli_stmt_bind_param($stmt, 's', $USER_ID);
-			$formToDeleteQuestion .="<br> Hier die Umfrage auswählen, die gelöscht werden soll: <br>
+			$formToDeleteQuestionnaire .="<br> Hier die Umfrage auswählen, die gelöscht werden soll: <br>
 			<select id=\"NAME\" name=\"NAME\">";
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
