@@ -15,3 +15,9 @@ include_once 'includes.php';
 
 <br>
 <a href="deleteQuestionsFromQuestionnaire.php" title="Fragen aus Umfrage löschen"> Fragen aus Umfrage löschen </a>
+
+<br>
+<a href="deleteQuestionnairePicker.php" title="Umfrage löschen"> Umfrage löschen </a>
+
+<br>
+<a href="copyQuestionnairePicker.php" title="Umfrage kopieren"> Umfrage kopieren </a>
