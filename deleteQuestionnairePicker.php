@@ -1,6 +1,6 @@
 <!--AUTHOR: Viktor Matussis -->
 <?php
-include_once "includes.php";
+include_once 'includes.php';
 
 
 echo "<h1>Hier können Sie die Umfrage auswählen, die sie löschen möchten</h1>";
