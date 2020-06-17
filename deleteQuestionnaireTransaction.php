@@ -14,7 +14,7 @@ if (!isset($_POST["QUESTIONNAIRE_ID"])) {
 
 $sql = "DELETE FROM QUESTION WHERE  QUESTIONNAIRE_ID = ?";
             $stmt = mysqli_prepare($connection, $sql);
-            mysqli_stmt_bind_param($stmt, 'ss', $QUESTIONNAIRE_ID, $Q_NUMBER);
+            mysqli_stmt_bind_param($stmt, 'ss', $QUESTIONNAIRE_ID);
             if (!mysqli_stmt_execute($stmt)) {
                 echo "Etwas ist schief gelaufen.";
             } else {
