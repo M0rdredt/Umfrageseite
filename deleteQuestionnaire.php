@@ -19,7 +19,7 @@ $stmt = mysqli_prepare($connection, $SQL_QUESTIONNAIRE_ID);
 		$QUESTIONNAIRE_ID = $QUESTIONNAIRE_ID_Array['QUESTIONNAIRE_ID'];
 
 
-
+//erst makes with , WORKS_WITH ,answers -> questions -> questionnaire
 
 //Um eine Umfrage zu löschen sollten keine fragen enthalten sein. Daher werden alle fragen in der Umfrage gelöscht bevor diese gelöscht wird.
 // auch Antworten , WORKS_WITH etc.
