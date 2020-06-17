@@ -2,21 +2,26 @@
 <?php
 include_once 'includes.php';
 
+if (!isset($_POST["NAME"])) {
+    echo "No NAME";
+} else {
+    $NAME = $_POST["NAME"];
+}
 
+$SQL_QUESTIONNAIRE_ID = "select QUESTIONNAIRE_ID from Questionnaire WHERE NAME = ?";
+$stmt = mysqli_prepare($connection, $SQL_QUESTIONNAIRE_ID);
+    mysqli_stmt_bind_param($stmt, 's', $NAME);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+    $QUESTIONNAIRE_ID_Array = mysqli_fetch_assoc($result);
+    $QUESTIONNAIRE_ID = $QUESTIONNAIRE_ID_Array['QUESTIONNAIRE_ID'];
 //Im Folgenden wird überprüft, dass der Primärschlüssel für die Frage übergeben wurde
-  if (!isset($_POST["QUESTIONNAIRE_ID"]))
-    {
-    echo "No Questionnnaire_ID";
-    }
-    else
-    {
-    $QUESTIONNAIRE_ID = $_POST["QUESTIONNAIRE_ID"];
-    }
+
       mysqli_autocommit($connection, false);
 
 
 
-      
+
 $sql = "DELETE FROM answers WHERE  QUESTIONNAIRE_ID = ?";
             $stmt = mysqli_prepare($connection, $sql);
             mysqli_stmt_bind_param($stmt, 's', $QUESTIONNAIRE_ID);
