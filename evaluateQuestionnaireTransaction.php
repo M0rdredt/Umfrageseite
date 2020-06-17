@@ -11,7 +11,7 @@ if (!isset($_POST["NAME"])) {
 } else {
   $NAME = $_POST["NAME"];
 }
-
+//Findet die Questionnaire id für die fragen
 $SQL_QUESTIONNAIRE_ID = "select * from Questionnaire WHERE NAME = ?";
 $stmt = mysqli_prepare($connection, $SQL_QUESTIONNAIRE_ID);
 mysqli_stmt_bind_param($stmt, 's', $NAME);
@@ -27,12 +27,14 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 while ($row = mysqli_fetch_assoc($result)){
+echo "Frage: ".$row["QUESTION"]."<br>" ;
+
 $sql = "select min(answer) as Min,max(answer)as Max, avg(answer) as Avg from answers where QUESTIONNAIRE_ID =? AND  Q_Number =?";
 $stmt = mysqli_prepare($connection, $sql);
 mysqli_stmt_bind_param($stmt, 'ss', $QUESTIONNAIRE_ID,$row["Q_NUMBER"]);
 mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-$sql_result = mysqli_fetch_assoc($result);
+$sql_result = mysqli_stmt_get_result($stmt);
+$sql_result = mysqli_fetch_assoc($sql_result);
 echo "Min: " .$sql_result["Min"].'<br>';
 echo "Max: " .$sql_result["Max"].'<br>';
 echo "Avg: " .$sql_result["Avg"].'<br>';
@@ -42,14 +44,17 @@ $sql_deviation = "select answer from answers where QUESTIONNAIRE_ID =? AND  Q_Nu
 $stmt = mysqli_prepare($connection, $sql_deviation);
 mysqli_stmt_bind_param($stmt, 'ss', $QUESTIONNAIRE_ID,$row["Q_NUMBER"]);
 mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+$deiviation_result = mysqli_stmt_get_result($stmt);
 $array  = array();
-while ($sql_result = mysqli_fetch_assoc($result))
+while ($sql_result = mysqli_fetch_assoc($deiviation_result))
 {
+  //echo "Test while 2";
   array_push($array,$sql_result["answer"]);
+  //echo "Test while 2.1";
 }
 
-echo "Stand_Abweichung: ".Stand_Deviation($array)."<br>";
+echo "Stand_Abweichung: ".Stand_Deviation($array)."<br><br><br><br>";
+
 }
 
 $SQL_Makes = "select * from Makes WHERE QUESTIONNAIRE_ID = ?";
