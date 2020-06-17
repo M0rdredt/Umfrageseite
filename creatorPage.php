@@ -21,3 +21,6 @@ include_once 'includes.php';
 
 <br>
 <a href="copyQuestionnairePicker.php" title="Umfrage kopieren"> Umfrage kopieren </a>
+
+<br>
+<a href="evaluateQuestionnairePicker.php" title="Umfrage auswerten"> Umfrage auswerten </a>
