@@ -6,7 +6,7 @@ include_once 'includes.php';
 echo "<h1>Hier können Sie die Umfrage auswählen, die sie löschen möchten</h1>";
 
 //Das HTML wird in diese Variable geschrieben um es am Ende über Echo auszugeben
-$formToDeleteQuestionnaire =	"<form method=\"post\" action=\"deleteQuestionnaire.php\">";
+$formToDeleteQuestionnaire =	"<form method=\"post\" action=\"deleteQuestionnaireTransaction.php\">";
 
 //nur die Umfragen anzeigen, die von diesem User erstellt wurden
 $USER = $_SESSION["User"];
