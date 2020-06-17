@@ -9,7 +9,7 @@ if (!isset($_POST["NAME"])) {
     $NAME = $_POST["NAME"];
 }
 
-//Hier Questionnaire_ID der Umfrage ermitteln, das ist nötig da Fragen schwach an der QUESTIONNAIRE_ID sind und um umfragen zu löschhen alle fragen zu löschen sind
+//Hier Questionnaire_ID der Umfrage ermitteln, das ist nötig da Fragen schwach an der QUESTIONNAIRE_ID sind und um umfragen zu löschen alle fragen zu löschen sind
 $SQL_QUESTIONNAIRE_ID = "select QUESTIONNAIRE_ID from Questionnaire WHERE NAME = ?";
 $stmt = mysqli_prepare($connection, $SQL_QUESTIONNAIRE_ID);
 		mysqli_stmt_bind_param($stmt, 's', $NAME);
